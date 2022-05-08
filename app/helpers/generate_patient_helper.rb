@@ -1,0 +1,2 @@
+module GeneratePatientHelper
+end
