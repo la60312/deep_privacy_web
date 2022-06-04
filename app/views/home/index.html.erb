@@ -1,35 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<% content_for :footer do %>
 	<head>
 		<style>
 			body {
           background-color: whitesmoke
 			}
-        .col-centered {
-            float: none;
-            margin: 0 auto;
-        }
-        .button {
-            background-color: white;
-            color: #F0612F;
-            border: 3px solid #F0612F;
-            padding: 8px;
-            margin: 3px;
-            text-align: center;
-            text-decoration: none;
-            display: inline;
-        }
-        /* Style the header */
-        .header {
-            padding: 40px;
-            margin: 0%
-				}
-        .paper{
-            border-left: 10px solid #F0612F;
-            background-color: Gainsboro;
-            padding: 5px 0px 5px 10px
-				}
+      #main-navbar {
+					width: 90%;
+					margin: 2rem auto;
+          display: flex;
+          justify-content: space-between;
+					/*position: fixed;*/
+					/*top: 0;*/
+					/*right: 0;*/
+					/*margin: 2rem;*/
+          background-color: whitesmoke;
+      }
+			header h1 {
+          text-decoration-line: underline;
+					text-decoration-color: #F0612F;
+					align-items: center;
+					margin: 0;
+			}
+
+      #header {
+          display: flex;
+          justify-content: space-evenly;
+      }
+
+      #main-navbar .menu-btn {
+          display: none;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: auto 0;
+      }
+      .menu-btn span {
+          width: 100%;
+          height: 3px;
+          background-color: #F0612F;
+      }
+
+      #sidedrawer {
+          padding-top: 2.5rem;
+          width: 100%;
+          height: 100%;
+          background-color: rgba(255, 255, 255, 1);
+          display: none;
+          position:fixed;
+          left: 0;
+          top: 0;
+      }
+
+      #sidedrawer .menu-btn {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          width: 1.5rem;
+          height: 1.5rem;
+          margin: auto 0;
+      }
+
+      #sidedrawer:target {
+          display: flex;
+          flex-direction: column;
+      }
+
+      #sidedrawer ul {
+          display: flex;
+          flex-direction: column;
+          text-align: left;
+      }
+
+      #sidedrawer a {
+          text-decoration: none;
+          color: #F0612F;
+          font-weight: bold;
+          font-size: 1.5rem;
+      }
+
+      #sidedrawer span {
+          width: 100%;
+          height: 3px;
+          background-color: #F0612F;
+      }
+
+			.col-centered {
+					float: none;
+					margin: 0 auto;
+			}
+			.button {
+					background-color: white;
+					color: #F0612F;
+					border: 3px solid #F0612F;
+					padding: 8px;
+					margin: 3px;
+					text-align: center;
+					text-decoration: none;
+					display: inline;
+          border-radius: 3px;
+          box-shadow: 1px 1px 4px rgba(147, 145, 145, 0.5);
+			}
+			.paper{
+					border-left: 10px solid #F0612F;
+					background-color: Gainsboro;
+					padding: 5px 0px 5px 10px
+			}
       a:link,a:visited {
           color: #F0612F;
           background-color: transparent;
@@ -41,232 +118,244 @@
           text-decoration: underline;
 			}
 
+      @media (max-width: 62rem) {
+					#header {
+							display: none;
+					}
+          #main-navbar .menu-btn {
+              display: flex;
+          }
+      }
+
 		</style>
 
 	</head>
-	<div class="container" style="margin:30px">
-		<div class="row d-flex align-items-center">
-			<div class="col-md-3 text-center">
-				<%= image_tag("UKB_logo.png", :size=> "140x35") %>
-			</div>
-
-			<div class="col-md-3 text-center">
-				<a href="https://www.igsb.uni-bonn.de/en" target="_blank">
-					<%= image_tag("unibonn_igsb.png", :size => "261x72"	) %>
+	<body>
+		<header>
+			<nav id="main-navbar">
+				<h1>DeepPrivacy</h1>
+				<div id="header" >
+					<a class="button" href="#Introduction">Introduction</a>
+					<a class="button" href="#User_study">User Study</a>
+					<a class="button" href="#About_us">About us</a>
+					<a class="button" href="#Related_projects">Related projects</a>
+					<a class="button" href="#Contact_us">Contact us</a>
+				</div>
+				<a href="#sidedrawer" class="menu-btn">
+					<span></span>
+					<span></span>
+					<span></span>
 				</a>
+			</nav>
+		</header>
+		<aside id="sidedrawer">
+			<ul id="menu">
+				<a href="" class="menu-btn" id="ham-icon">
+					<span></span>
+					<span></span>
+					<span></span>
+					<a class="button" href="#Introduction">Introduction</a>
+					<a class="button" href="#User_study">User Study</a>
+					<a class="button" href="#About_us">About us</a>
+					<a class="button" href="#Related_projects">Related projects</a>
+					<a class="button" href="#Contact_us">Contact us</a>
+			</ul>
+		</aside>
+		<main>
+			<div class="container">
+				<h2 id="Introduction">Introduction</h2>
+				<p style="text-align: justify">
+					Rare disorders are defined by an incidence of below 1 in 2000.
+					However, due to their sheer number - currently, more than 8000 Mendelian disorders are known
+					alone - roughly 3% of the population are affected by a rare disorder.
+					the facial gestalt is very informative, sometimes even decisive,
+					in the diagnostic process for every second or third patient with a rare disease.
+					The performance of next-generation phenotyping (NGP) approaches depends highly on the
+					size and diversity of the training dataset. Because collecting a large number of images from
+					individuals with rare disorders at a single institution is not feasible, data sharing between
+					different sites is crucial, and this is usually done through publication. However, since we are
+					re-identifiable by our faces, only about one out of ten patients gives consent. Therefore, we
+					propose synthesizing portraits of rare disorders based on real data that can remain local to
+					overcome this barrier.
+				</p>
+				<p>
+					The two overall objectives of our project are to enable data sharing
+					while maintaining patient privacy and to explain the decisions made by NGP algorithms.
+				</p>
+				<br>
 			</div>
-			<div class="col-md-3 text-center">
-				<a href="https://www.agdev.de" target="_blank">
-					<%= image_tag("logo-agd-full.png", :size => "240x60") %>
-				</a>
+			<div class="container">
+				<h2 id="User_study">User Study</h2>
 			</div>
-			<div class="col-md-3 text-center">
-				<a href="https://www.gene-talk.de" target="_blank">
-					<%= image_tag("GeneTalkLogo.png", :size=> "235x66") %>
-				</a>
+			<div class="container">
+				<h2 id="About_us">About us</h2>
+				<br>
+				<div class="container">
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("logo_IGSB_quadratisch_mit_Schrift.jpg", :size => "194x109")%>
+								<br>
+								<b>Institute for Genomic Statistics and Bioinformatics</b><br>
+								<b>Universität Bonn</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("uniausburg_logo.svg", :size => "194x109") %>
+								<br>
+								<b>Chair for Human-Centered Artificial Intelligence<br>
+									Universität Augsburg</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("Krawitz_Peter.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.igsb.uni-bonn.de/en/team-1/peter-krawitz" target="_blank">Prof. Dr. Peter Krawitz</a><br></b>
+								Association for Genome Diagnostics (AGD), Germany<br>
+								<b>Institute for Genomic Statistics and Bioinformatics</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("elisabeth_andre.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/andre/" target="_blank">Prof. Dr. Elisabeth André</a><br></b>
+								Universität Augsburg, Germany<br>
+								<b>Chair for Human-Centered Artificial Intelligence</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("Shahida_Moosa.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="http://www.sun.ac.za/english/faculty/healthsciences/Molecular_Biology_Human_Genetics/rare-disease_genomics/group-members" target="_blank">Shahida Moosa, MD/PhD</a><br></b>
+								Stellenbosch University, Cape Town, South Africa<br>
+								<b>Medical consultant</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("tobiasbaur.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/baur/" target="_blank">Dr. Tobias Baur</a><br></b>
+								Universität Augsburg, Germany<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("Hsieh_Tzung-Chien.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.igsb.uni-bonn.de/en/team-1/tzung-chien-hsieh" target="_blank">Tzung-Chien Hsieh</a><br></b>
+								IGSB, Universität Bonn<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("silvanmertes.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/silvan-mertes-msc/" target="_blank">Silvan Mertes</a><br></b>
+								Universität Augsburg<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("Alexander_Hustinx.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.igsb.uni-bonn.de/en/team-1/alexander-hustinx" target="_blank">Alexander Hustinx</a><br></b>
+								IGSB, Universität Bonn<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("Fabio_Hellmann.png", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/hellmann/" target="_blank">Fabio Hellmann</a><br></b>
+								Universität Augsburg<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("avanmardi_Behnam.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.igsb.uni-bonn.de/en/team-1/behnam-javanmardi" target="_blank">Dr. Behnam Javanmardi</a><br></b>
+								IGSB, Universität Bonn<br>
+								<b>Scientific Researcher</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<br>
+								<br>
+								<%= image_tag("GeneTalkLogo.png", :size => "235x66") %><br>
+								<b><a href="https://www.gene-talk.de/" target="_blank">GeneTalk GmbH</a><br></b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("jingmei.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://www.igsb.uni-bonn.de/en/team-1/tzung-chien-hsieh" target="_blank">Dr. Jing-Mei Li</a><br></b>
+								IGSB, Universität Bonn<br>
+								<b>Software developer</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("tom.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="http://kamphans.de/tom.html" target="_blank">Dr. Tom Kamphans</a><br></b>
+								GeneTalk GmbH<br>
+								<b>Software developer</b>
+							</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-5 col-centered">
+							<p class="text-center">
+								<%= image_tag("tori.jfif", :size => "150x150", :style => "border-radius: 50%;") %><br>
+								<b><a href="https://classic.gene-talk.de/team" target="_blank">Tori Pantel, MD</a><br></b>
+								AGD, Universität Bonn<br>
+								<b>Public Relations</b>
+							</p>
+						</div>
+						<div class="col-5 col-centered">
+							<p class="text-center">
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-	</div>
-<% end %>
-<body>
-<div class="header" style="text-align: right; padding-right: 150px">
-	<a class="button" href="#Introduction">Introduction</a>
-	<a class="button" href="#About_us">About us</a>
-	<a class="button" href="#Related_projects">Related projects</a>
-	<a class="button" href="#Contact_us">Contact us</a>
-</div>
-<div class="container" style="padding: 0px 150px">
-	<h1 style="text-decoration-line: underline; text-decoration-color: #F0612F">DeepPrivacy</h1>
-	<br>
-	<h2 id="Introduction">Introduction</h2>
-	<p style="text-align: justify">
-		Rare disorders are defined by an incidence of below 1 in 2000.
-		However, due to their sheer number - currently, more than 8000 Mendelian disorders are known
-		alone - roughly 3% of the population are affected by a rare disorder.
-		the facial gestalt is very informative, sometimes even decisive,
-		in the diagnostic process for every second or third patient with a rare disease.
-		The performance of next-generation phenotyping (NGP) approaches depends highly on the
-		size and diversity of the training dataset. Because collecting a large number of images from
-		individuals with rare disorders at a single institution is not feasible, data sharing between
-		different sites is crucial, and this is usually done through publication. However, since we are
-		re-identifiable by our faces, only about one out of ten patients gives consent. Therefore, we
-		propose synthesizing portraits of rare disorders based on real data that can remain local to
-		overcome this barrier.
-	</p>
-	<p>
-		The two overall objectives of our project are to enable data sharing
-		while maintaining patient privacy and to explain the decisions made by NGP algorithms.
-	</p>
-	<br>
-</div>
-<div class="container" style="padding: 0px 150px">
-	<h2 id="About_us">About us</h2>
-	<br>
-	<div class="container">
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("logo_IGSB_quadratisch_mit_Schrift.jpg", :size => "194x109")%>
+			<div class="container">
+				<h2 id="Related_projects">Related projects</h2>
+				<p class="paper">
+					<a href="https://db.gestaltmatcher.org/"><%= image_tag("gmdb_logo.jpg", :size => "50x50")%></a>
+					<a class="button" href="https://db.gestaltmatcher.org/"><b>GestaltMatcher DB</b></a><br>
 					<br>
-					<b>Institute for Genomic Statistics and Bioinformatics</b><br>
-					<b>Universität Bonn</b>
+					GestaltMatcher paper:<br>
+					Hsieh, TC., Bar-Haim, A., Moosa, S. et al. <br>
+					<a href="https://doi.org/10.1038/s41588-021-01010-x" target="_blank">
+						<strong>GestaltMatcher facilitates rare disease matching using facial phenotype descriptors.</strong></a>
+					Nat Genet (2022).
+				</p>
+				<p class="paper">
+					<a href="https://bone2gene.gestaltmatcher.org/"><%= image_tag("gmdb_logo.jpg", :size => "50x50")%></a>
+					<a class="button" href="https://bone2gene.gestaltmatcher.org/"><b>Bone2Gene</b></a><br>
 				</p>
 			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("uniausburg_logo.svg", :size => "194x109") %>
-					<br>
-					<b>Chair for Human-Centered Artificial Intelligence<br>
-						Universität Augsburg</b>
-				</p>
+			<div class="container">
+				<h2 id="Contact_us">Contact us</h2>
+				If you are interested in our project, please contact Prof. Peter Krawitz:
+				<a href="mailto:pkrawitz@uni-bonn.de"><b>pkrawitz@uni-bonn.de</b></a>
+				<br>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("Krawitz_Peter.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.igsb.uni-bonn.de/en/team-1/peter-krawitz" target="_blank">Prof. Dr. Peter Krawitz</a><br></b>
-					Association for Genome Diagnostics (AGD), Germany<br>
-					<b>Institute for Genomic Statistics and Bioinformatics</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("elisabeth_andre.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/andre/" target="_blank">Prof. Dr. Elisabeth André</a><br></b>
-					Universität Augsburg, Germany<br>
-					<b>Chair for Human-Centered Artificial Intelligence</b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("Shahida_Moosa.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="http://www.sun.ac.za/english/faculty/healthsciences/Molecular_Biology_Human_Genetics/rare-disease_genomics/group-members" target="_blank">Shahida Moosa, MD/PhD</a><br></b>
-					Stellenbosch University, Cape Town, South Africa<br>
-					<b>Medical consultant</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("tobiasbaur.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/baur/" target="_blank">Dr. Tobias Baur</a><br></b>
-					Universität Augsburg, Germany<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("Hsieh_Tzung-Chien.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.igsb.uni-bonn.de/en/team-1/tzung-chien-hsieh" target="_blank">Tzung-Chien Hsieh</a><br></b>
-					IGSB, Universität Bonn<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("silvanmertes.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/silvan-mertes-msc/" target="_blank">Silvan Mertes</a><br></b>
-					Universität Augsburg<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("Alexander_Hustinx.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.igsb.uni-bonn.de/en/team-1/alexander-hustinx" target="_blank">Alexander Hustinx</a><br></b>
-					IGSB, Universität Bonn<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("Fabio_Hellmann.png", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.uni-augsburg.de/en/fakultaet/fai/informatik/prof/hcm/team/hellmann/" target="_blank">Fabio Hellmann</a><br></b>
-					Universität Augsburg<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("avanmardi_Behnam.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.igsb.uni-bonn.de/en/team-1/behnam-javanmardi" target="_blank">Dr. Behnam Javanmardi</a><br></b>
-					IGSB, Universität Bonn<br>
-					<b>Scientific Researcher</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<br>
-					<br>
-					<%= image_tag("GeneTalkLogo.png", :size => "235x66") %><br>
-					<b><a href="https://www.gene-talk.de/" target="_blank">GeneTalk GmbH</a><br></b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("jingmei.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://www.igsb.uni-bonn.de/en/team-1/tzung-chien-hsieh" target="_blank">Dr. Jing-Mei Li</a><br></b>
-					IGSB, Universität Bonn<br>
-					<b>Software developer</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("tom.jpg", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="http://kamphans.de/tom.html" target="_blank">Dr. Tom Kamphans</a><br></b>
-					GeneTalk GmbH<br>
-					<b>Software developer</b>
-				</p>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-5 col-centered">
-				<p class="text-center">
-					<%= image_tag("tori.jfif", :size => "150x150", :style => "border-radius: 50%;") %><br>
-					<b><a href="https://classic.gene-talk.de/team" target="_blank">Tori Pantel, MD</a><br></b>
-					AGD, Universität Bonn<br>
-					<b>Public Relations</b>
-				</p>
-			</div>
-			<div class="col-5 col-centered">
-				<p class="text-center">
-				</p>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="container" style="padding: 0px 150px">
-	<h2 id="Related_projects">Related projects</h2>
-	<p class="paper">
-		<a href="https://db.gestaltmatcher.org/"><%= image_tag("gmdb_logo.jpg", :size => "50x50")%></a>
-		<a class="button" href="https://db.gestaltmatcher.org/"><b>GestaltMatcher DB</b></a><br>
-		<br>
-		GestaltMatcher paper:<br>
-		Hsieh, TC., Bar-Haim, A., Moosa, S. et al. <br>
-		<a href="https://doi.org/10.1038/s41588-021-01010-x" target="_blank">
-			<strong>GestaltMatcher facilitates rare disease matching using facial phenotype descriptors.</strong></a>
-		Nat Genet (2022).
-	</p>
-	<p class="paper">
-		<a href="https://db.gestaltmatcher.org/"><%= image_tag("gmdb_logo.jpg", :size => "50x50")%></a>
-		<a class="button" href="https://db.gestaltmatcher.org/"><b>Bone2Gene</b></a><br>
-	</p>
-</div>
-<div class="container" style="padding: 0px 150px">
-	<h2 id="Contact_us">Contact us</h2>
-	If you are interested in our project, please contact Prof. Peter Krawitz:
-	<a href="mailto:pkrawitz@uni-bonn.de"><b>pkrawitz@uni-bonn.de</b></a>
-	<br>
-</div>
-</body>
+		</main>
+	</body>
 </html>
