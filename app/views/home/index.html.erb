@@ -92,6 +92,14 @@
           background-color: #F0612F;
       }
 
+      #portrait img{
+		      display: block;
+		      max-width: 40%;
+		      max-height: 100%;
+		      margin: 3rem auto;
+		      object-fit: cover;
+      }
+
 			.col-centered {
 					float: none;
 					margin: 0 auto;
@@ -133,9 +141,12 @@
           }
       }
       p {
-		      font-size: 1.05rem;
-
+		      font-size: 1.2rem;
           }
+      h2 {
+		      font-weight: bold;
+		      color: #F0612F;
+      }
 
 
 		</style>
@@ -179,6 +190,7 @@
 				<p style="text-align: justify">
 					Rare disorders are defined by an incidence of below 1 in 2000. However, due to their sheer number - currently, more than 8000 Mendelian disorders are known alone - roughly 3% of the population are affected by a rare disorder. The facial gestalt is informative, sometimes even decisive, in the diagnostic process for every second or third patient with a rare disease. The performance of next-generation phenotyping (NGP) approaches depends highly on the size and diversity of the training dataset. Because collecting many images from individuals with rare disorders at a single institution is not feasible, data sharing between different sites is crucial, and this is usually done through publication. However, since we are re-identifiable by our faces, only about one out of ten patients gives consent. Therefore, we propose synthesizing portraits of rare disorders based on actual data that can remain local to overcome this barrier.
 				</p>
+				<p>
 				The two overall objectives of our project are to enable data sharing while maintaining patient privacy, and to explain the decisions made by NGP algorithms.
 				</p>
 			</div>
@@ -189,6 +201,9 @@
 					patients and prepare a quiz for you to challenge. Give it a try and visit the
 					<a href="https://deepprivacy-grading.gestaltmatcher.org/">quiz page</a> here!
 				</p>
+				<div id="portrait">
+					<%= image_tag("lading_page.png", :style => "border-radius: 50%")%>
+				</div>
 			</div>
 			<div class="container">
 				<h2 id="About_us">About us</h2>
